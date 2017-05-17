@@ -4,7 +4,7 @@ SRC = src
 BIN = bin
 OBJ = obj
 
-EXE = $(BIN)/hello
+EXE = $(BIN)/gameOfLife
 
 MODULES  = util.ml core.ml app.ml
 OINFACES = $(MODULES:%.ml=$(OBJ)/%.cmi)
