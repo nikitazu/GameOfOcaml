@@ -1,23 +1,28 @@
 SRC = src
 BIN = bin
+OBJ = obj
 EXE = $(BIN)/hello
 MLS = $(SRC)/core.ml  $(SRC)/app.ml
 MLI = $(SRC)/core.mli $(SRC)/app.mli
-CMI = $(SRC)/core.cmi $(SRC)/app.cmi
-
+CMI = $(OBJ)/core.cmi $(OBJ)/app.cmi
+CMO = $(OBJ)/core.cmo $(OBJ)/app.cmo
 
 all: $(EXE)
 
-$(EXE): $(BIN) $(SRC) $(CMI) $(MLS)
-	ocamlc -o $(EXE) -I $(SRC) $(MLS)
+$(EXE): $(BIN) $(OBJ) $(CMO)
+	ocamlc -o $(EXE) -I $(OBJ) $(CMO)
 
-$(CMI): $(SRC) $(MLI)
-	ocamlc -I $(SRC) $(MLI)
+$(CMO): $(OBJ) $(CMI) $(MLS)
+	ocamlc -c -I $(OBJ) $(MLS) && mv $(SRC)/*.cmo $(OBJ)/
+
+$(CMI): $(OBJ) $(MLI)
+	ocamlc $(MLI) && mv $(SRC)/*.cmi $(OBJ)/
 
 $(BIN):
 	mkdir -p $(BIN)
 
+$(OBJ):
+	mkdir -p $(OBJ)
+
 clean:
-	rm -rf $(BIN)
-	rm -rf $(SRC)/*.cmi
-	rm -rf $(SRC)/*.cmo
+	rm -rf $(BIN) $(OBJ)
