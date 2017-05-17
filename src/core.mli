@@ -1,1 +1,1 @@
-val greeting : string
+val greeting : string -> string

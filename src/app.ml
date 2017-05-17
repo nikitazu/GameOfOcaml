@@ -1,5 +1,6 @@
 let main () =
-  Printf.fprintf stdout "%s\n" Core.greeting
+  Core.greeting "Petya"
+  |> Util.puts
 
 let () =
   main ()

@@ -6,7 +6,7 @@ OBJ = obj
 
 EXE = $(BIN)/hello
 
-MODULES  = core.ml app.ml
+MODULES  = util.ml core.ml app.ml
 OINFACES = $(MODULES:%.ml=$(OBJ)/%.cmi)
 OMODULES = $(MODULES:%.ml=$(OBJ)/%.cmo)
 

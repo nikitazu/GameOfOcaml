@@ -1,1 +1,2 @@
-let greeting = "Hello, World!"
+let greeting name =
+  "Hello, " ^ name ^ "!"
