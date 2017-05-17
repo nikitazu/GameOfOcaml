@@ -1,12 +1,18 @@
 SRC = src
 BIN = bin
 EXE = $(BIN)/hello
-MLS = $(SRC)/app.ml
+MLS = $(SRC)/core.ml  $(SRC)/app.ml
+MLI = $(SRC)/core.mli $(SRC)/app.mli
+CMI = $(SRC)/core.cmi $(SRC)/app.cmi
+
 
 all: $(EXE)
 
-$(EXE): $(BIN) $(MLS)
-	ocamlc -o $(EXE) $(MLS)
+$(EXE): $(BIN) $(SRC) $(CMI) $(MLS)
+	ocamlc -o $(EXE) -I $(SRC) $(MLS)
+
+$(CMI): $(SRC) $(MLI)
+	ocamlc -I $(SRC) $(MLI)
 
 $(BIN):
 	mkdir -p $(BIN)
