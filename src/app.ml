@@ -1,7 +1,5 @@
-module App = struct
-  let main () =
-    Printf.fprintf stdout "%s\n" Core.Core.greeting
-end
+let main () =
+  Printf.fprintf stdout "%s\n" Core.greeting
 
 let () =
-  App.main ()
+  main ()

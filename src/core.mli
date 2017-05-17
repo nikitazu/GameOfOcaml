@@ -1,3 +1,1 @@
-module Core : sig
-  val greeting : string
-end
+val greeting : string

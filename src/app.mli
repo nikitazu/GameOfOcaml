@@ -1,3 +1,1 @@
-module App : sig
-  val main : unit -> unit
-end
+val main : unit -> unit

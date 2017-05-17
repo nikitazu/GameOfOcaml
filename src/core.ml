@@ -1,3 +1,1 @@
-module Core = struct
-  let greeting = "Hello, World!"
-end
+let greeting = "Hello, World!"
