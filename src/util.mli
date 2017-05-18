@@ -1,4 +1,5 @@
 val puts : string -> unit
+val putsln : string -> unit
 val combo : 'a list -> ('a * 'a) list
 val tuple_sum : (int*int) -> (int*int) -> (int*int)
 val (<<) : ('b -> 'c) -> ('a -> 'b) -> 'a -> 'c
@@ -12,4 +13,6 @@ module Matrix : sig
   val get : int -> int -> 'a matrix -> 'a
   val get' : 'a matrix -> (int * int) -> 'a
   val get_near : int -> int -> 'a matrix -> 'a list
+  val map : (int -> int -> 'a -> 'b) -> 'a matrix -> 'b matrix
+  val iter : ('a array -> unit) -> ('a -> unit) -> 'a matrix -> unit
 end

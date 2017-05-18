@@ -1,6 +1,7 @@
 open Printf
 
-let puts = fprintf stdout "%s\n"
+let puts = fprintf stdout "%s"
+let putsln = fprintf stdout "%s\n"
 
 let combo xs =
   xs
@@ -16,7 +17,7 @@ module ArrExt = struct
   let get x xs =
     let l = Array.length xs in
     let x' = x mod l in
-    (if x' > 0 then x' else x' + l)
+    (if x' >= 0 then x' else x' + l)
     |> Array.get xs
 end
 
@@ -33,4 +34,16 @@ module Matrix = struct
     combo [-1; 0; 1]
     |> List.filter (fun (x, y) -> x <> 0 || y <> 0)
     |> List.map (get' m << tuple_sum (x,y))
+  
+  let map f m =
+    Array.mapi
+      (fun x row -> Array.mapi (fun y c -> f x y c) row)
+      m
+  
+  let iter rowf cellf m =
+    Array.iter
+      (fun row ->
+        Array.iter (fun c -> cellf c) row;
+        rowf row;)
+      m
 end
