@@ -40,10 +40,8 @@ module Matrix = struct
       (fun x row -> Array.mapi (fun y c -> f x y c) row)
       m
   
-  let iter rowf cellf m =
-    Array.iter
-      (fun row ->
-        Array.iter (fun c -> cellf c) row;
-        rowf row;)
+  let iter f m =
+    Array.iteri
+      (fun x row -> Array.iteri (fun y c -> f x y c) row)
       m
 end

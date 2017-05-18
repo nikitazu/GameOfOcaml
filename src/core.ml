@@ -30,12 +30,6 @@ module Cell = struct
         |> List.fold_left add 0
         |> step c)
       cells
-  
-  let puts cells =
-    Util.Matrix.iter
-      (fun row -> Util.putsln "")
-      (fun cell -> cell |> to_s |> Util.puts)
-      cells
 end
 
 let greeting name =
